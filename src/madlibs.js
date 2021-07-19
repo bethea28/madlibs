@@ -64,6 +64,8 @@ export function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case SUBMIT_FIELD: {
       const fieldAnswer = state.fieldAnswers[action.payload.fieldId];
+
+      // update madlib template with input answer
       const newSentence = action.payload.answer.replace(
         '$answer',
         fieldAnswer,
@@ -73,6 +75,7 @@ export function reducer(state = INITIAL_STATE, action) {
       finalEssayText.splice(
         action.payload.fieldId,
         1,
+        // filter sentence for undefined
         (!newSentence.includes('undefined') ? newSentence : ''),
       );
 
