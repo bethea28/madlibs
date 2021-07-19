@@ -8,7 +8,6 @@ export const SUBMIT_FIELD = 'MADLIBS.SUBMIT_FIELD';
 export const SHOW_TEXTAREA = 'MADLIBS.SHOW_TEXTAREA';
 export const START_OVER = 'MADLIBS.START_OVER';
 export const ADD_DATA = 'MADLIBS.ADD_DATA';
-export const BLUR_UPDATE = 'MADLIBS.BLUR_UPDATE';
 
 // Initial state
 // ----------------------------------------------------------------------------
@@ -54,7 +53,8 @@ export function startOver() {
 export const createSentenceThunk = (value, id) => (dispatch) => {
   const template = getTextTemplates(FIELD_NAMES[value]);
   const randomNumber = Math.floor(Math.random() * template.length);
-  const sentence = template[randomNumber] || '';
+  const sentence = template[randomNumber];
+  // const sentence = template[randomNumber] || '';
   dispatch(submitField(value, sentence, id));
 };
 
@@ -85,14 +85,6 @@ export function reducer(state = INITIAL_STATE, action) {
       };
     }
 
-
-    case BLUR_UPDATE: {
-      return {
-        essayText: [],
-
-      };
-    }
-
     case ADD_DATA: {
       const newArray = state.fieldAnswers.length > 0 ? [...state.fieldAnswers] : [];
       newArray.splice(action.payload.id, 1, action.payload.event.target.value);
@@ -107,9 +99,10 @@ export function reducer(state = INITIAL_STATE, action) {
       return {
         fieldOrder: [...state.fieldOrder],
         showTextArea: !state.showTextArea,
-        essayText: state.essayText.slice(1),
+        essayText: state.essayText,
       };
     }
+    // startover resets state by assigning it to empty array
     case START_OVER: {
       return {
         ...state,

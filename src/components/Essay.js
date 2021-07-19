@@ -14,8 +14,10 @@ const Essay = ({
         <h2>Essay</h2>
         {essayText.length > 0
           && essayText.map((sentence) => <b key={`${sentence}_fields`}>{sentence}</b>)}
-
       </div>
+
+      {/* tells the edit button to show when all fields are populated and none contain
+       empty strings */}
       {essayText.length >= Object.keys(FIELD_NAMES).length
           && essayText.indexOf('') < 0 && (
             <button className="essay_edit-button" onClick={handleChangeTextAreaFlag}>

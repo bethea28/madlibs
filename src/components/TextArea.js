@@ -6,7 +6,9 @@ require('./TextArea.scss');
 const TextAreaComponent = ({ essayText, handleStartOver }) => (
   <div className="textarea-container">
     <h2>Your essay text</h2>
-    <textarea onChange={() => {}} className="textarea-component" value={essayText} />
+
+    {/* onChange required for eslint purposes */}
+    <textarea onChange={() => ''} className="textarea-component" value={essayText} />
     <section>
       <button
         className="textarea-container_startover_button "
