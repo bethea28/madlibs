@@ -54,7 +54,6 @@ export const createSentenceThunk = (value, id) => (dispatch) => {
   const template = getTextTemplates(FIELD_NAMES[value]);
   const randomNumber = Math.floor(Math.random() * template.length);
   const sentence = template[randomNumber];
-  // const sentence = template[randomNumber] || '';
   dispatch(submitField(value, sentence, id));
 };
 
