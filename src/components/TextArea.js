@@ -4,20 +4,18 @@ import PropTypes from 'prop-types';
 require('./TextArea.scss');
 
 const TextAreaComponent = ({ essayText, handleStartOver }) => (
-  <div className="textarea-container">
+  <section className="textarea-container">
     <h2>Your essay text</h2>
 
     {/* onChange required for eslint purposes */}
     <textarea onChange={() => ''} className="textarea-component" value={essayText} />
-    <section>
-      <button
-        className="textarea-container_startover_button "
-        onClick={handleStartOver}
-      >
-        START OVER
-      </button>
-    </section>
-  </div>
+    <button
+      className="textarea-container_startover_button "
+      onClick={handleStartOver}
+    >
+      START OVER
+    </button>
+  </section>
 );
 TextAreaComponent.propTypes = {
   essayText: PropTypes.arrayOf(

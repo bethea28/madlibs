@@ -15,10 +15,10 @@ const App = ({
   showTextArea,
   startOver,
 }) => (
-  <div className="App">
+  <section className="App">
     {!showTextArea && (
       <section className="App_forms-container">
-        <div>
+        <article>
           <Form
             handleBlur={(field, id, event) => {
               createSentenceThunk(field, id, event);
@@ -28,22 +28,22 @@ const App = ({
             }}
             fieldOrder={fieldOrder}
           />
-        </div>
-        <div>
+        </article>
+        <article>
           <Essay
             essayText={essayText}
             handleChangeTextAreaFlag={textAreaFlagChange}
           />
-        </div>
+        </article>
       </section>
     )}
 
     {showTextArea && (
-      <section className="App_textarea-component">
+      <article className="App_textarea-component">
         <TextAreaComponent handleStartOver={startOver} essayText={essayText} />
-      </section>
+      </article>
     )}
-  </div>
+  </section>
 );
 
 App.propTypes = {

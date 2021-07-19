@@ -4,27 +4,19 @@ import { FIELDS } from '../constants';
 
 require('./Form.scss');
 
-const Form = ({
-  fieldOrder,
-  handleInputChange,
-  handleBlur,
-}) => (
+const Form = ({ fieldOrder, handleInputChange, handleBlur }) => (
   <form className="form">
     <h2 className="form_header">About Me</h2>
     {fieldOrder.map((field, id) => (
-      <label className="form_label" key={`${field}_field`} htmlFor="temp-id">
-        <>
-          <p className="form_label-header">
-            {FIELDS[field]}
-          </p>
-          <input
-            className="form_input"
-            type="text"
-            name={field}
-            onChange={(event) => handleInputChange(field, id, event)}
-            onBlur={(event) => handleBlur(field, id, event)}
-          />
-        </>
+      <label className="form_label" key={`${field}_field`} htmlFor="form_label">
+        <h4 className="form_label-header">{FIELDS[field]}</h4>
+        <input
+          className="form_input"
+          type="text"
+          name={field}
+          onChange={(event) => handleInputChange(field, id, event)}
+          onBlur={(event) => handleBlur(field, id, event)}
+        />
       </label>
     ))}
   </form>
