@@ -43,7 +43,7 @@ export function textAreaFlagChange() {
 }
 
 export function startOver() {
-  return { type: START_OVER, payload: { text: '' } };
+  return { type: START_OVER };
 }
 
 
@@ -107,7 +107,7 @@ export function reducer(state = INITIAL_STATE, action) {
         essayText: state.essayText,
       };
     }
-    // startover resets state by assigning it to empty array
+    // startover resets state by assigning it to an empty array
     case START_OVER: {
       return {
         ...state,
