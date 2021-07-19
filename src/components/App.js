@@ -20,8 +20,9 @@ const App = ({
       <section className="App_forms-container">
         <article>
           <Form
+          // sending essayText to be used as previous state for comparison
             handleBlur={(field, id, event) => {
-              createSentenceThunk(field, id, event);
+              createSentenceThunk(field, id, event, essayText);
             }}
             handleInputChange={(field, id, event) => {
               setFieldData(field, id, event);

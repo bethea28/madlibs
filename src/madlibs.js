@@ -21,7 +21,7 @@ export const INITIAL_STATE = {
     FIELD_NAMES.messageIf,
     FIELD_NAMES.bar,
   ],
-  fieldId: -1,
+  fieldId: 0,
   fieldAnswers: [],
   essayText: [],
   showTextArea: false,
@@ -50,11 +50,14 @@ export function startOver() {
 // Thunks
 // ----------------------------------------------------------------------------
 
-export const createSentenceThunk = (value, id) => (dispatch) => {
+export const createSentenceThunk = (value, id, event, prevState) => (dispatch) => {
   const template = getTextTemplates(FIELD_NAMES[value]);
   const randomNumber = Math.floor(Math.random() * template.length);
   const sentence = template[randomNumber];
-  dispatch(submitField(value, sentence, id));
+
+  // checking prevState answer against current state answer
+  const compareState = !prevState[id]?.includes(event.target.value);
+  if (compareState) dispatch(submitField(value, sentence, id));
 };
 
 // Reducer
